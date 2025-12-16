@@ -5,7 +5,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Fetch random user
+  // Fetch random user using api with async await for syncronus behavior
   const fetchUser = async () => {
     setLoading(true);
     try {
