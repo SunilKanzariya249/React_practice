@@ -7,20 +7,6 @@ const App = () => {
   const [priority, setPriority] = useState("Medium");
   const [filter, setFilter] = useState("All");
 
-  // Load tasks from localStorage
-  useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks"));
-    if (savedTasks) {
-      setTasks(savedTasks);
-    }
-  }, []);
-
-  // Save tasks to localStorage
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  // Add Task
   const addTask = () => {
     if (taskText.trim() === "") return;
 
@@ -35,12 +21,12 @@ const App = () => {
     setTaskText("");
   };
 
-  // Delete Task
+
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
-  // Toggle Task Status
+
   const toggleTask = (id) => {
     setTasks(
       tasks.map(task =>
@@ -51,7 +37,7 @@ const App = () => {
     );
   };
 
-  // Filter tasks
+
   const filteredTasks = tasks.filter(task => {
     if (filter === "Completed") return task.completed;
     if (filter === "Pending") return !task.completed;
@@ -63,7 +49,7 @@ const App = () => {
       <div className="card p-4 shadow">
         <h3 className="text-center mb-4">Smart To-Do Manager</h3>
 
-        {/* Add Task */}
+
         <input
           type="text"
           className="form-control mb-2"
@@ -86,7 +72,7 @@ const App = () => {
           Add Task
         </button>
 
-        {/* Filter */}
+
         <select
           className="form-select mt-3"
           value={filter}
@@ -97,7 +83,7 @@ const App = () => {
           <option>Pending</option>
         </select>
 
-        {/* Task List */}
+
         <ul className="list-group mt-4">
           {filteredTasks.length === 0 && (
             <li className="list-group-item text-center">
